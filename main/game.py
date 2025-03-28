@@ -20,6 +20,12 @@ class player:
             self.position = 42
         elif (x == 30 and self.position < 86):
            self.position = 86
+        elif (x == 37 and self.position < 57):
+            self.position = 57
+        elif (x == 60 and self.position < 96):
+           self.position = 96
+        elif (x == 66 and self.position < 74):
+            self.position = 74
         else:
             self.position += x
     def fall(self,y:int) -> int:
@@ -116,8 +122,7 @@ class game:
                 print('Enter a valid number!')
                 os.system('pause')
                 self.start(self=game)
-        except Exception as e:
-                    print(e)
+        except:
                     os.system('pause')
                     self.start(self=game)
         
