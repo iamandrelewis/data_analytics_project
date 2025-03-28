@@ -3,16 +3,19 @@ import os
 
 class player:
     """
-    
+    This class is the player instance, 
+    it contains the player attributes and the methods
+    for updating the player position
     """
     def __init__(self,name, score,position):
         self.name = name
         self.score = score
         self.position = position
 
-    def climb(self,x):
+    def climb(self,x:int):
         """
-        Nla
+        This method accepts the dice roll value and an instance of the player class, 
+        and updates the position of the player on the board based on it's previous position
         """
         if(x == 3 and self.position < 24):
             self.position = 24
@@ -30,7 +33,8 @@ class player:
             self.position += x
     def fall(self,y:int) -> int:
         """
-        Nla
+        This method accepts the dice roll value and an instance of the player class, 
+        and updates the position of the player on the board based on it's previous position
         """
         if(y == 27):
             self.position = 7
@@ -50,6 +54,8 @@ class player:
 class game:
     l = []
     """
+    This class is the game instance, 
+    it contains the methods for the board, and game conditions
     """
     def __init__(self):
         pass
@@ -116,6 +122,7 @@ class game:
                         except:
                             reversed(p)
                     if(playersList[p].position >= 100):
+                        playersList[p].score += 1
                         print("Player ",playersList[p].name, " wins!")
                         break              
             else:
