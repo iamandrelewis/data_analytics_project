@@ -57,8 +57,13 @@ class game:
     This class is the game instance, 
     it contains the methods for the board, and game conditions
     """
+    
     def __init__(self):
         pass
+    
+    def menu():
+        pass
+
     def board(l:list):
         print("SNAKES & LADDERS\t\t\t\tCreated by Andre Lewis (2108069)\n\n")
         turn = 2    
@@ -121,7 +126,7 @@ class game:
                                 continue
                         except:
                             reversed(p)
-                    if(playersList[p].position >= 100):
+                    if(playersList[p].position >= 100): 
                         playersList[p].score += 1
                         print("Player ",playersList[p].name, " wins!")
                         break              
