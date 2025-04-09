@@ -3,6 +3,8 @@ def print_board(board):
         print(" | ".join(row))
         print("-" * 9)
 
+
+
 def check_winner(board, player):
     # Check rows, columns, and diagonals for a win
     for row in board:
