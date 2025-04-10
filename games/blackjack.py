@@ -96,6 +96,3 @@ while play_again.upper() != 'EXIT':
         print("It's a tie!")
 
     play_again = input("\nWould you like to continue? EXIT to leave\n")
-
-    if __name__ == '__main__':
-        remove_card(card_deck,new_card)
