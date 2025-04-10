@@ -1,5 +1,8 @@
 import os 
 from games.snakes import *
+from games.tic_tac_toe import *
+from games.blackjack import *
+from games.dice import *
 
 def menu():
     os.system('cls')
@@ -19,13 +22,15 @@ def menu():
             Game = game.start(self=game)
             menu()
         case '2':
-            pass
+            dice_game()
+            menu()
         case '3':
             tic_tac_toe()
         case '4':
-            pass
+            remove_card(card_deck,new_card)
+            menu()
         case '0':
-            pass
+            os.system('cls')
         case _:
             menu()
 
