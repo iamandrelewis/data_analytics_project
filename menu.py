@@ -1,7 +1,6 @@
 import os 
 from games.snakes import *
 from games.tic_tac_toe import *
-from games.blackjack import *
 from games.dice import *
 
 def menu():
@@ -27,6 +26,7 @@ def menu():
         case '3':
             tic_tac_toe()
         case '4':
+            from games.blackjack import *
             remove_card(card_deck,new_card)
             menu()
         case '0':
