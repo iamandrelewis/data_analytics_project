@@ -10,7 +10,7 @@ def menu():
     print("\t\tWELCOME TO GROUP #3's ARCADE")
     print("---------------------------------------------------------\n")
     print(" [1]. Snakes and Ladders by Andre Lewis\t\t(2108069)")
-    print(" [2]. Dice by Jerome McKenzie\t\t\t(#######)")
+    print(" [2]. Dice by Jerome McKenzie\t\t\t(2405838)")
     print(" [3]. Tic Tac Toe by Chris-Anthony Williams\t(#######)")
     print(" [4]. Black Jack by Matthew Thomas\t\t(#######)\n")
     print("---------------------------------------------------------")
