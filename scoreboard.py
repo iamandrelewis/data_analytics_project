@@ -29,7 +29,7 @@ player_scores = {
     "Player 2": 0,
 }
 
-def calculate_stats(score):
+def calculate_stats(scores):
     """
 
     Calculates mode, mean, median, min, and max from a list of scores.
@@ -41,13 +41,23 @@ def calculate_stats(score):
         dict: A dictionary containing calculated statistics.
     """
     with open("scores.txt","r") as f:
-        player1, player2 = f.read().split('\t')
-
-    player1 = int(player1)
-    player2 = int(player2)
-
+        players = f.read().split('\t')
+    
     scores = list()
-    scores.append(player1)
+    for items in players:
+        try:
+            scores.append(int(items))
+        except:
+            continue
+    player1 = list()
+    player1.append(scores[0])
+    player2 = list()
+    player2.append(scores[1])
+    player_scores["Player 1"] = player1
+    player_scores["Player 2"] = player2
+
+    print(scores)
+
     try:
         return {
             "mean": round(mean(scores), 2),
