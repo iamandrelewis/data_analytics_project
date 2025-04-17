@@ -193,7 +193,6 @@ def player_setup_screen():
         list: List of player names entered by the user
     """
     players = ['Player 1', 'Player 2']
-    input_text = ""
     active = False
     input_rect = pygame.Rect(SCREEN_WIDTH//2 - 150, SCREEN_HEIGHT//2, 300, 40)
     color_active = pygame.Color('lightskyblue3')
@@ -330,9 +329,9 @@ def show_round_results(players, round_num, num_dice, round_totals, round_winners
         draw_text(screen, f"Round {round_num} Results", (SCREEN_WIDTH//2, 50), WHITE, title_font, True)
         
         # Draw each player's dice and total
-        for i, player in enumerate(players):
-            player_color = PLAYER_COLORS[i]
-            y_pos = player_dice_y + i * (DICE_SIZE + 60)
+        for player in players:
+            player_color = PLAYER_COLORS[players.index(player)]
+            y_pos = player_dice_y + players.index(player) * (DICE_SIZE + 60)
             
             # Draw player name and total
             draw_text(screen, f"{player}: {round_totals[player]}", (100, y_pos + DICE_SIZE//2 - 10), player_color)
@@ -357,6 +356,7 @@ def show_round_results(players, round_num, num_dice, round_totals, round_winners
         
         pygame.display.flip()
         clock.tick(30)
+
 
 def show_final_results(players, scores):
     """Display the final results after all rounds are completed.
@@ -454,10 +454,10 @@ def main_game_loop(players):
         for winner in round_winners:
                 
             with open("./main/scores.txt","r") as f:
-                players = f.read().split('\t')
+                x = f.read().split('\t')
 
             scores = list()
-            for items in players:
+            for items in x:
                 try:
                     scores.append(int(items))
                 except:
