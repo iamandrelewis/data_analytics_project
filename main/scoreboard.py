@@ -57,9 +57,9 @@ def calculate_stats(scores):
     
 
     player1 = list()
-    player1.append(scores)
+    player1.append(scores[0])
     player2 = list()
-    player2.append(scores)
+    player2.append(scores[1])
     player_scores["Player 1"] = player1
     player_scores["Player 2"] = player2
 
