@@ -43,7 +43,6 @@ def calculate_stats(scores):
     with open("./main/scores.txt","r") as f:
         players = f.read().split('\t')
     
-    print(players)
     scores = list()
 
     if len(players) > 1:
@@ -58,13 +57,12 @@ def calculate_stats(scores):
     
 
     player1 = list()
-    player1.append(0)
+    player1.append(scores)
     player2 = list()
-    player2.append(0)
+    player2.append(scores)
     player_scores["Player 1"] = player1
     player_scores["Player 2"] = player2
 
-    print(scores)
 
     try:
         return {

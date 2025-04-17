@@ -3,7 +3,7 @@ from pygame import image
 
 # Define snakes and ladders positions
 snakes = {16: 6, 49: 11, 62: 19, 87: 24, 93: 73, 95: 75, 98: 78}
-ladders = {1: 38, 4: 14, 9: 31, 21: 42, 28: 84, 36: 44, 51: 67, 71: 91, 80: 100}
+ladders = {2: 38, 4: 14, 9: 31, 21: 42, 28: 84, 36: 44, 51: 67, 71: 91, 80: 100}
 
 # Load the images for snakes and ladders
 snake_img = image.load("assets/snake.png")

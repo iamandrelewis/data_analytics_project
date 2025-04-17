@@ -88,10 +88,10 @@ def check_winner():
         winner = board[0][2]
     if winner:
         with open("./main/scores.txt","r") as f:
-            players = f.read().split('\t')
+            x = f.read().split('\t')
 
         scores = list()
-        for items in players:
+        for items in x:
             try:
                 scores.append(int(items))
             except:
@@ -101,6 +101,7 @@ def check_winner():
             player2 = scores[1]
             scoreboard["Player 1"] = player1
             scoreboard["Player 2"] = player2
+
         game_over = True
         scoreboard[players[winner]] += 1
         with open("./main/scores.txt","w") as f:
