@@ -75,17 +75,19 @@ while running:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if btn_ttt.collidepoint(event.pos):
-                run_game("tic_tac_toe_game.py")
+                run_game("./games/tic_tac_toe_game.py")
             elif btn_blackjack.collidepoint(event.pos):
-                run_game("blackjack.py")
+                run_game("./games/blackjack.py")
             elif btn_snakes.collidepoint(event.pos):
-                run_game("snakes.py")
+                run_game("./games/snakes_n_ladders/snakes.py")
             elif btn_quit.collidepoint(event.pos):
+                with open("./main/scores.txt","w") as f:
+                    f.write(" ")
                 running = False
             elif btn_dice.collidepoint(event.pos):
-                run_game("dice_game.py")
+                run_game("./games/dice_game.py")
             elif btn_score.collidepoint(event.pos):
-                run_game("scoreboard.py")
+                run_game("./main/scoreboard.py")
 
     pygame.display.flip()
 

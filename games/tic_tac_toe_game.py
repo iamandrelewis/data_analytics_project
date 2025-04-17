@@ -87,9 +87,23 @@ def check_winner():
     if board[0][2] == board[1][1] == board[2][0] != "":
         winner = board[0][2]
     if winner:
+        with open("./main/scores.txt","r") as f:
+            players = f.read().split('\t')
+
+        scores = list()
+        for items in players:
+            try:
+                scores.append(int(items))
+            except:
+                continue
+        if len(scores) > 0:
+            player1 = scores[0]
+            player2 = scores[1]
+            scoreboard["Player 1"] = player1
+            scoreboard["Player 2"] = player2
         game_over = True
         scoreboard[players[winner]] += 1
-        with open("scores.txt","w") as f:
+        with open("./main/scores.txt","w") as f:
             f.write(f"{scoreboard['Player 1']}\t\t{scoreboard['Player 2']}")
     elif all(board[row][col] != "" for row in range(3) for col in range(3)):
         game_over = True

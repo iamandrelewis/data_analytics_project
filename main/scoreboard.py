@@ -40,7 +40,7 @@ def calculate_stats(scores):
     Returns:
         dict: A dictionary containing calculated statistics.
     """
-    with open("scores.txt","r") as f:
+    with open("./main/scores.txt","r") as f:
         players = f.read().split('\t')
     
     scores = list()

@@ -6,8 +6,8 @@ snakes = {16: 6, 49: 11, 62: 19, 87: 24, 93: 73, 95: 75, 98: 78}
 ladders = {1: 38, 4: 14, 9: 31, 21: 42, 28: 84, 36: 44, 51: 67, 71: 91, 80: 100}
 
 # Load the images for snakes and ladders
-snake_img = pygame.image.load("snake.png")
-ladder_img = pygame.image.load("ladder.png")
+snake_img = pygame.image.load("assets/snake.png")
+ladder_img = pygame.image.load("assets/ladder.png")
 
 def check_snake_or_ladder(pos):
     """Check if current position has a snake or ladder."""

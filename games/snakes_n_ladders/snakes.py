@@ -7,11 +7,11 @@ https://www.youtube.com/watch?v=fv8mgvsuSKY&t=3s
 """
 import pygame
 import random
-from snakes_n_ladders.player import Player
-from snakes_n_ladders.dice import Dice
-from snakes_n_ladders.board import draw_board, check_snake_or_ladder
-from snakes_n_ladders.analytics import calculate_analytics
-from snakes_n_ladders.utils import draw_text
+from player import Player
+from dice import Dice
+from board import draw_board, check_snake_or_ladder
+from analytics import calculate_analytics
+from utils import draw_text
 
 # Color Scheme
 BG_COLOR = (50, 50, 80)
@@ -52,7 +52,7 @@ large_font = pygame.font.SysFont(None, 48)
 clock = pygame.time.Clock()
 
 # Load dice images
-dice_images = [pygame.image.load(f"dice_{i}.png") for i in range(1, 7)]
+dice_images = [pygame.image.load(f"assets/dice_{i}.png") for i in range(1, 7)]
 
 # Initialize players and dice
 def init_game():
@@ -125,9 +125,26 @@ while active:
                 current_player.position, _ = check_snake_or_ladder(current_player.position)
 
                 if current_player.position == 100:
+                                
+                    with open("./main/scores.txt","r") as f:
+                        players = f.read().split('\t')
+
+                    scores = list()
+                    for items in players:
+                        try:
+                            scores.append(int(items))
+                        except:
+                            continue
+                    if len(scores) > 0:
+                        player1 = scores[0]
+                        player2 = scores[1]
+                        scoreboard["Player 1"] = player1
+                        scoreboard["Player 2"] = player2
+
                     winner = current_player.name
+                    
                     scoreboard[winner] += 1
-                    with open("scores.txt","w") as f:
+                    with open("./main/scores.txt","w") as f:
                         f.write(f"{scoreboard['Player 1']}\t\t{scoreboard['Player 2']}")
                     show_win_screen = True
 
