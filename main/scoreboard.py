@@ -44,11 +44,18 @@ def calculate_stats(scores):
         players = f.read().split('\t')
     
     scores = list()
-    for items in players:
-        try:
-            scores.append(int(items))
-        except:
-            continue
+
+    if len(players) > 1:
+        for items in players:
+            try:
+                scores.append(int(items))
+            except:
+                continue
+    else:
+        scores.append(0)
+        scores.append(0)
+    
+
     player1 = list()
     player1.append(scores[0])
     player2 = list()
@@ -56,7 +63,6 @@ def calculate_stats(scores):
     player_scores["Player 1"] = player1
     player_scores["Player 2"] = player2
 
-    print(scores)
 
     try:
         return {

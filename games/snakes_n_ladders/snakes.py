@@ -63,6 +63,7 @@ def init_game():
 
 players, dice, current_player_index, winner, show_win_screen = init_game()
 
+
 # Button setup
 button_roll = pygame.Rect(450, 500, 120, 40)
 button_restart = pygame.Rect(450, 550, 120, 40)
@@ -107,8 +108,8 @@ while active:
     pygame.draw.rect(screen, BUTTON_DEFAULTS["exit"], button_restart)
     draw_text(screen, "Restart", 470, 560, font, WHITE)
 
-    for i, player in enumerate(players):
-        draw_text(screen, f"{player.name} Position: {player.position}", 10, 560 + i * 20, font, PLAYER_COLORS[player.name])
+    for player in players:
+        draw_text(screen, f"{player.name} Position: {player.position}", 10, 560 + players.index(player) * 20, font, PLAYER_COLORS[player.name])
 
     draw_text(screen, f"{players[current_player_index].name}'s Turn", 10, 20, font, YELLOW)
 
@@ -125,28 +126,24 @@ while active:
                 current_player.position, _ = check_snake_or_ladder(current_player.position)
 
                 if current_player.position == 100:
-                                
-                    with open("./main/scores.txt","r") as f:
-                        players = f.read().split('\t')
-
-                    scores = list()
-                    for items in players:
-                        try:
-                            scores.append(int(items))
-                        except:
-                            continue
-                    if len(scores) > 0:
-                        player1 = scores[0]
-                        player2 = scores[1]
-                        scoreboard["Player 1"] = player1
-                        scoreboard["Player 2"] = player2
+                    try:
+                        with open("./main/scores.txt", "r") as f:
+                            score_data = f.read().split('\t')
+                            player1 = int(score_data[0]) if len(score_data) > 0 else 0
+                            player2 = int(score_data[1]) if len(score_data) > 1 else 0
+                            scoreboard["Player 1"] = player1
+                            scoreboard["Player 2"] = player2
+                    except:
+                        pass  # Default values already in scoreboard
 
                     winner = current_player.name
-                    
                     scoreboard[winner] += 1
-                    with open("./main/scores.txt","w") as f:
+
+                    with open("./main/scores.txt", "w") as f:
                         f.write(f"{scoreboard['Player 1']}\t\t{scoreboard['Player 2']}")
+                    
                     show_win_screen = True
+
 
                 current_player_index = (current_player_index + 1) % len(players)
 
@@ -154,19 +151,16 @@ while active:
                 players, dice, current_player_index, winner, show_win_screen = init_game()
 
     tile_size = 60
-    for i, player in enumerate(players):
-        row = 9 - (player.position - 1) // 10
-        col = (player.position - 1) % 10 if (row % 2 == 0) else 9 - (player.position - 1) % 10
-        x = col * tile_size + 20 + i * 5
-        y = row * tile_size + 20
-        pygame.draw.circle(screen, player.color, (x, y), 10)
+    for player in players:
+        if isinstance(player.position, int) and player.position > 0:
+            row = 9 - (player.position - 1) // 10
+            col = (player.position - 1) % 10 if (row % 2 == 0) else 9 - (player.position - 1) % 10
+            x = col * tile_size + 20 + players.index(player) * 5
+            y = row * tile_size + 20
+            pygame.draw.circle(screen, player.color, (x, y), 10)
+
 
     pygame.display.flip()
     clock.tick(30)
 
 pygame.quit()
-
-stats = calculate_analytics(dice.history)
-print("\nDice Roll Analytics:")
-for k, v in stats.items():
-    print(f"{k.capitalize()}: {v}")
