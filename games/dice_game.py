@@ -469,6 +469,7 @@ def main_game_loop(players):
                 scoreboard["Player 2"] = player2
                 
             scoreboard[winner] += 1
+            scores[winner] += 1
             with open("./main/scores.txt","w") as f:
                 f.write(f"{scoreboard['Player 1']}\t\t{scoreboard['Player 2']}")
         
